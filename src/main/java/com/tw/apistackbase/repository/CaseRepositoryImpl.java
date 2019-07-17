@@ -6,6 +6,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CaseRepositoryImpl {
@@ -22,5 +23,9 @@ public class CaseRepositoryImpl {
 
     public List<Case> getAllCasesSortByTimeDesc(){
         return caseRepository.findAll(Sort.by(Sort.Order.desc("time")));
+    }
+
+    public List<Case> getCasesByCaseName(String caseName) {
+        return caseRepository.findAll().stream().filter(case1 -> case1.getCaseName().equals(caseName)).collect(Collectors.toList());
     }
 }

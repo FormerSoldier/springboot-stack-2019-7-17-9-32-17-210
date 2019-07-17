@@ -34,7 +34,7 @@ public class Story1Test {
     }
 
     @Test
-    public void should_return_cases_when_call_get_cases_reverse(){
+    public void should_return_cases_when_call_get_cases_sort_by_time_desc(){
         Case case1 = new Case("打人",new Date().getTime());
         Case case2 = new Case("碰瓷",new Date().getTime() + 10);
         caseRepositoryImpl.saveCase(case1);
@@ -47,5 +47,21 @@ public class Story1Test {
         testCases.add(case1);
         Assertions.assertEquals(cases, testCases);
     }
+
+    @Test
+    public void should_return_cases_when_call_get_cases_by_case_name_given_case_name(){
+        Case case1 = new Case("打人",new Date().getTime());
+        Case case2 = new Case("打人",new Date().getTime()+100);
+        Case case3 = new Case("碰瓷",new Date().getTime() + 1000);
+        caseRepositoryImpl.saveCase(case1);
+        caseRepositoryImpl.saveCase(case2);
+        caseRepositoryImpl.saveCase(case3);
+
+        List<Case> resultCases = caseRepositoryImpl.getCasesByCaseName("打人");
+        List<Case> resultCases2 = caseRepositoryImpl.getCasesByCaseName("碰瓷");
+        Assertions.assertEquals(resultCases.size(),2);
+        Assertions.assertEquals(resultCases2.size(),1);
+    }
+
 
 }
