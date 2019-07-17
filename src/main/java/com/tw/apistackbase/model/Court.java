@@ -2,6 +2,7 @@ package com.tw.apistackbase.model;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Court {
@@ -12,7 +13,24 @@ public class Court {
     @Column(length = 50, nullable = false, unique = true)
     private String name;
 
+
+    @OneToMany
+    private List<Inquisitor> inquisitors;
+
     public Court() {
+    }
+
+    public Court(String name, List<Inquisitor> inquisitors) {
+        this.name = name;
+        this.inquisitors = inquisitors;
+    }
+
+    public List<Inquisitor> getInquisitors() {
+        return inquisitors;
+    }
+
+    public void setInquisitors(List<Inquisitor> inquisitors) {
+        this.inquisitors = inquisitors;
     }
 
     public Court(String name) {
