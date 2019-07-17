@@ -1,11 +1,15 @@
 package com.tw.apistackbase.controller;
 
+import com.tw.apistackbase.model.Case;
+import com.tw.apistackbase.repository.CaseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.logging.Logger;
 
 /**
@@ -19,9 +23,6 @@ public class HelloResource {
 
     @GetMapping(path = "/{userName}", produces = {"application/json"})
     public ResponseEntity<String> getAll(@PathVariable String userName) {
-
         return ResponseEntity.ok("Hello:" + userName);
     }
-
-
 }
