@@ -2,6 +2,7 @@ package com.tw.apistackbase.repository;
 
 import com.tw.apistackbase.model.Case;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +20,7 @@ public class CaseRepositoryImpl {
         return caseRepository.save(case1);
     }
 
-    /*public List<Case> getAllCases(){
-        return caseRepository.findAll();
-    }*/
+    public List<Case> getAllCasesSortByTimeDesc(){
+        return caseRepository.findAll(Sort.by(Sort.Order.desc("time")));
+    }
 }
