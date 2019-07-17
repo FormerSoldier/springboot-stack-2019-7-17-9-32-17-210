@@ -12,7 +12,9 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -31,6 +33,6 @@ public class Story2Test {
 
         CaseDescription description1 = caseRepository.getCaseDescriptionByCaseId(Long.valueOf(1));
 
-        Assertions.assertNotNull(description);
+        Assertions.assertNotNull(description1);
     }
 }
