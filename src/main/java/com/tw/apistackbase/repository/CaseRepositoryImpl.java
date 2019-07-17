@@ -28,4 +28,8 @@ public class CaseRepositoryImpl {
     public List<Case> getCasesByCaseName(String caseName) {
         return caseRepository.findAll().stream().filter(case1 -> case1.getCaseName().equals(caseName)).collect(Collectors.toList());
     }
+
+    public void deleteCaseById(Long id) {
+        caseRepository.deleteById(id);
+    }
 }

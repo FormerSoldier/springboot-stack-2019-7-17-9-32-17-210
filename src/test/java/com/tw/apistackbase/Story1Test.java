@@ -63,5 +63,19 @@ public class Story1Test {
         Assertions.assertEquals(resultCases2.size(),1);
     }
 
+    @Test
+    public void when_call_delete_case_by_id_given_case_id(){
+        Case case1 = new Case("打人",new Date().getTime());
+        Case case2 = new Case("打人",new Date().getTime()+100);
+        caseRepositoryImpl.saveCase(case1);
+        caseRepositoryImpl.saveCase(case2);
+
+        caseRepositoryImpl.deleteCaseById(Long.valueOf(1));
+
+        List<Case> resultCases = caseRepositoryImpl.getAllCasesSortByTimeDesc();
+
+        Assertions.assertEquals(resultCases.size(),1);
+    }
+
 
 }
