@@ -19,12 +19,23 @@ public class Case {
     @OneToOne(cascade = CascadeType.ALL)
     private CaseDescription description;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Court court;
+
+
     public Case() {
     }
 
     public Case(String caseName, Long time) {
         this.caseName = caseName;
         this.time = time;
+    }
+
+    public Case(String caseName, Long time, CaseDescription description, Court court) {
+        this.caseName = caseName;
+        this.time = time;
+        this.description = description;
+        this.court = court;
     }
 
     public Long getId() {
@@ -57,5 +68,13 @@ public class Case {
 
     public void setDescription(CaseDescription description) {
         this.description = description;
+    }
+
+    public Court getCourt() {
+        return court;
+    }
+
+    public void setCourt(Court court) {
+        this.court = court;
     }
 }

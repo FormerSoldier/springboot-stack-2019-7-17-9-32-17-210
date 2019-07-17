@@ -2,6 +2,7 @@ package com.tw.apistackbase.repository;
 
 import com.tw.apistackbase.model.Case;
 import com.tw.apistackbase.model.CaseDescription;
+import com.tw.apistackbase.model.Court;
 import com.tw.apistackbase.repository.CaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -38,6 +39,20 @@ public class CaseRepositoryImpl {
     // story2
     public CaseDescription getCaseDescriptionByCaseId(Long id){
         return caseRepository.findById(id).get().getDescription();
+    }
+
+    public void fillCourtInCaseIfNotHave(){
+        List<Case> cases = caseRepository.findAll();
+        Court defaultCourt = new Court("默认法院");
+        cases.stream().map(case1 -> {
+            if(case1.getCourt() == null) {
+                case1.setCourt(defaultCourt);
+            }
+            return case1;
+        });
+    }
+    public List<Case> findAll(){
+        return caseRepository.findAll();
     }
 
 }
