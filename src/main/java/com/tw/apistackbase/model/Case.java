@@ -1,9 +1,8 @@
 package com.tw.apistackbase.model;
 
 
+
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
 public class Case {
@@ -16,6 +15,9 @@ public class Case {
     private String caseName;      // 长度在0~255之间
     @Column(nullable = false)
     private Long time;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private CaseDescription description;
 
     public Case() {
     }
@@ -47,5 +49,13 @@ public class Case {
 
     public void setTime(Long time) {
         this.time = time;
+    }
+
+    public CaseDescription getDescription() {
+        return description;
+    }
+
+    public void setDescription(CaseDescription description) {
+        this.description = description;
     }
 }

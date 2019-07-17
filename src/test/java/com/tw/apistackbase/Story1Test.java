@@ -1,9 +1,7 @@
 package com.tw.apistackbase;
 
 
-import com.tw.apistackbase.exception.DataToLongException;
 import com.tw.apistackbase.model.Case;
-import com.tw.apistackbase.repository.CaseRepository;
 import com.tw.apistackbase.repository.CaseRepositoryImpl;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -19,7 +17,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+//@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 public class Story1Test {
 
     @Autowired
